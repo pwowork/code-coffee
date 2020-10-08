@@ -1,3 +1,7 @@
 {
+    "mount":{
+        "src":"/"
+    },
     "plugins": ["@snowpack/plugin-typescript"]
+    
 }
