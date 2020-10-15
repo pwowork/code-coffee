@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import {Dog} from "../shared/interfaces"
+import {Dog} from "../../shared/interfaces"
 /*
 export interface Dog{
     name:string;

@@ -7,5 +7,5 @@
     "strict": false,
     "rootDir": ".."
   },
-  "include": ["../shared"]
+  "include": ["../shared", "../api"]
 }
