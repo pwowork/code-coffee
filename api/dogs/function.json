@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/dogs/index.js"
+  "scriptFile": "../dist/api/dogs/index.js"
 }
