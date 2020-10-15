@@ -1,7 +1,9 @@
 {
     "mount":{
-        "src":"/"
+        "src":"/" 
     },
-    "plugins": ["@snowpack/plugin-typescript"]
+    "proxy":{
+        "/api":"http://127.0.0.1:7071/api"
+    }
     
 }
