@@ -4,6 +4,7 @@
     },
     "devDependencies": {
         "@snowpack/plugin-typescript": "^1.0.1",
+        "@types/mongoose": "^5.7.36",
         "snowpack": "^2.13.3"
     },
     "scripts": {
