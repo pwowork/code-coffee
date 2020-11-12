@@ -37,7 +37,9 @@ async function main() {
     await loadDogs();
     displayDogs();
 }
-document.getElementById("dog-register").addEventListener("click",async  ()=>{
+document.getElementById("dog-register").addEventListener("click",async  (e)=>{
+    e.preventDefault();
+    //if (!(e.target as HTMLFormElement).checkValidity()) return;
     const dog = {
         name:(document.getElementById("dog-name") as HTMLInputElement).value,
         age:(document.getElementById("dog-age") as HTMLInputElement).value,
