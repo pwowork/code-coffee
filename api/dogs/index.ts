@@ -1,7 +1,7 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import {Dog} from "../../shared/interfaces.d"
 import * as mongoose from 'mongoose';
-import { createDocumentRegistry } from "typescript";
+import { createDocumentRegistry, updateObjectBindingPattern } from "typescript";
 
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING,{useNewUrlParser:true});
 
@@ -65,10 +65,28 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
             await createDog(context);
             break;
         case 'GET':
-            await getAllDogs(context);
+            // GET dogs/{id?}
+            if (context.bindingData.name)
+            {
+                await getDog(context);
+            }
+            else{
+            // GET dogs
+                await getAllDogs(context);
+            }
+            break;
+        case 'PUT':
+            await updateDog(context);
             break;
     }
 };
+async function updateDog(context: Context) {
+    const newDog = context.req.body as Dog; //get data from user
+    await DogModel.update({name:newDog.name}, newDog);
+    context.res={
+        status:203
+    }
+}
 async function createDog(context: Context) {
     const newDog = context.req.body as Dog; //get data from user
     const dataDog=await DogModel.create(newDog); // save to database
@@ -93,6 +111,32 @@ async function getAllDogs(context: Context) {
         body: { dogs },
         header: { 'Content-Type': 'application/json' }
     };
+}
+
+async function getDog(context: Context) {
+    const dog = await DogModel.findOne({name: context.bindingData.name});
+    //     const dogs : Array<Dog> = [
+    //     {name:"Sammy", age: 2},
+    //     {name:"Doggy", age:5},
+    //     {name:"Roscoe", age: 7},
+    //     {name:"Butch", age: 4},
+    //     {name:"Azuros", age: 9}
+    // ];
+    if (dog)
+    {
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: { dog },
+            header: { 'Content-Type': 'application/json' }
+        };
+    }
+    else
+    {
+        context.res={
+            body:"No dog found",
+            status:404
+        }
+    }
 }
 
 export default httpTrigger;
