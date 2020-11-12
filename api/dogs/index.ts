@@ -21,6 +21,13 @@ const dogSchema = new mongoose.Schema({
         type:Number,
         min:0,
         max:20
+    },
+    description:{
+        type:String,
+        maxlength:1000,
+        minlength:50,
+        required:true,
+        trim:true
     }
 })
 
@@ -63,8 +70,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     }
 };
 async function createDog(context: Context) {
-    const newDog = context.req.body as Dog;
-    const dataDog=await DogModel.create(newDog);
+    const newDog = context.req.body as Dog; //get data from user
+    const dataDog=await DogModel.create(newDog); // save to database
     context.res={
         body:dataDog,
         status:201,
