@@ -36,14 +36,21 @@
                   <div class="container-fluid">
                     <form>
                       <div class="form-group">
-                        <label for="dog-name">Name</label>
-                        <input type="text" minlength="3" maxlength="20" class="form-control" id="dog-name" aria-describedby="name-help">
+                        <input type="hidden" id="dog-id"/>
+                        <label for="dog-name">Name:</label>
+                        <input type="text" minlength="3" maxlength="20" class="form-control" id="dog-name" aria-describedby="name-help" required>
                         <small id="name-help" class="form-text text-muted">Enter the dog name.</small>
                       </div>
                       <div class="form-group">
-                        <label for="dog-age">Age</label>
-                        <input type="number" min="0" max="20" class="form-control" id="dog-age" aria-describedby="age-help">
+                        <label for="dog-age">Age:</label>
+                        <input type="number" min="0" max="20" class="form-control" id="dog-age" aria-describedby="age-help" required>
                         <small id="age-help" class="form-text text-muted">Enter the dog age.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="dog-description">Description:</label>
+                        <textarea type="text" minlength="50" maxlength="1000" cols="30" rows="10" class="form-control" 
+                              id="dog-description" aria-describedby="description-help" required></textarea>
+                        <small id="description-help" class="form-text text-muted">Describe the dog in the couple of sentences.</small>
                       </div>
                       </form>                 
                    </div>
