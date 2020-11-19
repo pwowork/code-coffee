@@ -23,7 +23,7 @@ function displayDog(dog:Dog)
         (document.getElementById("dog-age") as HTMLInputElement).value=dog.age.toString();
         (document.getElementById("dog-description") as HTMLInputElement).value=dog.description??"";
         });
-    document.getElementById("dogs-list").append(dogUI);
+   // document.getElementById("dogs-list")!.append(dogUI);
 
 }
 async function loadDogs() {
@@ -40,7 +40,8 @@ async function main() {
     await loadDogs();
     displayDogs();
 }
-document.getElementById("dog-register").addEventListener("click",async  (e)=>{
+/*
+document.getElementById("dog-register")!.addEventListener("click",async  (e)=>{
     e.preventDefault();
     //if (!(e.target as HTMLFormElement).checkValidity()) return;
     const  name = (document.getElementById("dog-name") as HTMLInputElement).value;
@@ -83,6 +84,7 @@ document.getElementById("dog-register").addEventListener("click",async  (e)=>{
     (document.getElementById("dog-description") as HTMLInputElement).value="";
 
 });
+*/
 main();
 
 

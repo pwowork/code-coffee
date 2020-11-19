@@ -4,6 +4,12 @@
     },
     "proxy":{
         "/api":"http://127.0.0.1:7071/api"
-    }
+    },
+    "plugins":[
+        "@snowpack/plugin-dotenv",
+        "@snowpack/plugin-typescript",
+        "@snowpack/plugin-vue"
+        
+    ]
     
 }
