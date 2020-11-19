@@ -1,7 +1,13 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import {Dog} from "../../shared/interfaces.d"
+//import {Dog} from "../../shared/interfaces.d"
 import * as mongoose from 'mongoose';
 import { createDocumentRegistry, updateObjectBindingPattern } from "typescript";
+
+interface Dog{
+    name:string;
+    age:number;
+    description:string;
+}
 
 mongoose.connect(process.env.MONGOOSE_CONNECTION_STRING,{useNewUrlParser:true});
 
@@ -82,7 +88,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 };
 async function updateDog(context: Context) {
     const newDog = context.req.body as Dog; //get data from user
-    await DogModel.update({name:newDog.name}, newDog);
+    await DogModel.update({name:context.bindingData.name}, newDog);
     context.res={
         status:203
     }
