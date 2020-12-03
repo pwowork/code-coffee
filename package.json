@@ -1,7 +1,8 @@
 {
     "dependencies": {
         "typescript": "^4.0.3",
-        "vue": "^3.0.2"
+        "vue": "^3.0.2",
+        "vue-router": "^4.0.0-rc.6"
     },
     "devDependencies": {
         "@snowpack/plugin-dotenv": "^2.0.4",
